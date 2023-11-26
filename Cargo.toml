@@ -15,6 +15,11 @@ path = "src/concatenate.rs"
 name = "calculator"
 path = "src/calculator.rs"
 
+
+[[bin]]
+name = "customFilter"
+path = "src/customFilter.rs"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]

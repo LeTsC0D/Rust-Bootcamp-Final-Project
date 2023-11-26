@@ -1,4 +1,9 @@
 use std::collections::HashMap;
+use std::collections::HashSet;
+use delicious_fruits::apple;
+
+mod sports_player;
+use sports_player::{football_player};
 
 fn main() {
   // let message="Hello Shashank!";
@@ -264,69 +269,263 @@ fn main() {
   // let msg = Message::Write(String::from("Hello, Rust!"));
   // msg.call();
 
-  let mut numbers = vec![1, 2, 3, 4];
+  // let mut numbers = vec![1, 2, 3, 4];
+  // // Using the Vec::new() function
+  // // let mut names: Vec = Vec::new();
+  // let mut names: Vec<String> = Vec::new();
+  // names.push(String::from("Alice"));
+  // names.push(String::from("Bob"));
 
-  // Using the Vec::new() function
-  // let mut names: Vec = Vec::new();
-  let mut names: Vec<String> = Vec::new();
-  names.push(String::from("Alice"));
-  names.push(String::from("Bob"));
+  // let names = vec![String::from("Alice"), String::from("Bob")];
+  // let first_name = &names[0]; // Accessing the first element using indexing
+  // println!("The first name is: {}", first_name);
 
-  let names = vec![String::from("Alice"), String::from("Bob")];
-  let first_name = &names[0]; // Accessing the first element using indexing
-  println!("The first name is: {}", first_name);
+  // let numbers = vec![1, 2, 3, 4];
+  // for number in &numbers {
+  //     println!("Number: {}", number);
+  // }
+  // let numbers = vec![1, 2, 3, 4, 5];
+  // let slice = &numbers[1..4];
 
-  let numbers = vec![1, 2, 3, 4];
-  for number in &numbers {
-      println!("Number: {}", number);
-  }
-  let numbers = vec![1, 2, 3, 4, 5];
-  let slice = &numbers[1..4];
-
-  let mut hello = String::from("Hello, ");
-  hello.push_str("world!");
-  hello.push('!');
-  println!("{}", hello); // "Hello, world!!"
+  // let mut hello = String::from("Hello, ");
+  // hello.push_str("world!");
+  // hello.push('!');
+  // println!("{}", hello); // "Hello, world!!"
   
-  let example = String::from("hello");
-  let slice = &example[0..2];
-  println!("{}", slice); // "he"
+  // let example = String::from("hello");
+  // let slice = &example[0..2];
+  // println!("{}", slice); // "he"
 
-  let text = "こんにちは";
-  for c in text.chars() {
-      println!("{}", c);
-  }
+  // let text = "こんにちは";
+  // for c in text.chars() {
+  //     println!("{}", c);
+  // }
 
 
-  let example = String::from("hello");
+  // let example = String::from("hello");
+  // // Iterate over characters
+  // for c in example.chars() {
+  //     println!("{}", c);
+  // }
 
-  // Iterate over characters
-  for c in example.chars() {
-      println!("{}", c);
-  }
+  // // Iterate over bytes
+  // for b in example.bytes() {
+  //     println!("{}", b);
+  // }
 
-  // Iterate over bytes
-  for b in example.bytes() {
-      println!("{}", b);
-  }
+  // let mut scores = HashMap::new();
+  // scores.insert(String::from("Alice"), 10);
+  // scores.insert(String::from("Bob"), 20);
 
-  let mut scores = HashMap::new();
+  // let alice_score = scores.get(&String::from("Alice"));
+  // println!("Alice's score: {:?}", alice_score);
+  // scores.insert(String::from("Alice"), 30);
+  // println!("Updated scores: {:?}", scores);
+  // scores.remove(&String::from("Alice"));
+  // println!("Scores after removing Alice: {:?}", scores);
+  // for (key, value) in &scores {
+  //   println!("{}: {}", key, value);
+  // }
 
-  scores.insert(String::from("Alice"), 10);
-  scores.insert(String::from("Bob"), 20);
+  //iterators
+  // let mut fib = Fibonacci { current: 0, next: 1 };
 
-  let alice_score = scores.get(&String::from("Alice"));
-  println!("Alice's score: {:?}", alice_score);
-  scores.insert(String::from("Alice"), 30);
-  println!("Updated scores: {:?}", scores);
-  scores.remove(&String::from("Alice"));
-  println!("Scores after removing Alice: {:?}", scores);
+  // for _ in 0..10 {
+  //     println!("{}", fib.next().unwrap());
+  // }
+
+  // let vec = vec![1, 2, 3, 4, 5];
+  // for item in vec.iter() {
+  //     println!("{}", item);
+  // }
   
-  for (key, value) in &scores {
-    println!("{}: {}", key, value);
-  }
+  // let mut vec = vec![1, 2, 3, 4, 5];
+  // for item in vec.iter_mut() {
+  //     *item *= 2;
+  // }
+  
+  // for item in vec.iter() {
+  //   println!("{}", item);
+  // }
+
+  // let countdown = Countdown { remaining: 5 };
+
+  // for i in countdown {
+  //     println!("Remaining: {}", i);
+  // }
+
+
+  // //HashMap
+  // let mut scores = HashMap::new();
+  // scores.insert(String::from("Alice"), 10);
+  // scores.insert(String::from("Bob"), 20);
+  
+  // for (key, value) in scores.iter() {
+  //     println!("{}: {}", key, value);
+  // }  
+  
+  // let numbers = vec![1, 2, 3, 4, 5];
+  // let doubled: Vec<i32> = numbers.iter().map(|x| x * 2).collect();
+
+  // println!("{:?}", doubled); // Output: [2, 4, 6, 8, 10]
+
+  // let numbers = vec![1, 2, 3, 4, 5];
+  // let even_numbers: Vec<i32> = numbers.into_iter().filter(|x| x % 2 == 0).collect();
+
+  // println!("{:?}", even_numbers); // Output: [2, 4]
+
+  // let numbers = vec![1, 2, 3, 4, 5];
+  // let sum: i32 = numbers.iter().fold(0, |acc, x| acc + x);
+
+  // println!("The sum of the numbers is: {}", sum); // Output: The sum of the numbers is: 15
+  
+  // //chaining with iterator
+  // let numbers = vec![1, 2, 3, 4, 5];
+  // let doubled_evens: Vec<_> = numbers
+  //     .iter()
+  //     .filter(|n| *n % 2 == 0)
+  //     .map(|n| n * 2)
+  //     .collect();
+  
+  // println!("{:?}", doubled_evens);
+
+  // let words = vec!["apple", "banana", "cherry", "date", "fig"];
+  // let result: Vec<_> = words
+  //     .iter()
+  //     .enumerate()
+  //     .filter(|(i, _)| i % 2 == 0)
+  //     .map(|(i, w)| format!("{}: {}", i + 1, w.to_uppercase()))
+  //     .collect();
+  
+  // println!("{:?}", result);
+
+  // let numbers = vec![1, 2, 3, 4, 5];
+  // let doubled_numbers: Vec<_> = numbers.iter().map(|n| n * 2).collect();
+  
+  // println!("{:?}", doubled_numbers);
+   
+  // let numbers = vec![1, 2, 3, 4, 5];
+  // let unique_squares: HashSet<_> = numbers
+  //     .iter()
+  //     .map(|n| n * n)
+  //     .collect();
+  
+  // println!("{:?}", unique_squares);  
+
+
+  // let numbers = vec![1, 2, 3, 4, 5];
+  // let number_squares: HashMap<_, _> = numbers
+  //     .iter()
+  //     .map(|n| (n, n * n))
+  //     .collect();
+  
+  // println!("{:?}", number_squares);  
+
+  // let numbers = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  // let even_sum: i32 = numbers
+  //     .iter()
+  //     .filter(|n| *n % 2 == 0)
+  //     .sum();
+  
+  // println!("Sum of even numbers: {}", even_sum);  
+
+  //closures
+  //   let print_text = || println!("Defining Closure");
+  //   print_text();
+
+  //   let is_even = |x: i32| -> bool { x % 2 == 0 };
+  //   println!("Is 2 even? {}", is_even(2)); // true
+  //   println!("Is 3 even? {}", is_even(3)); // false
+
+  //   let numbers = vec![1, 2, 3, 4, 5];
+
+  //   // filter out only the even numbers using a closure
+  //   let evens: Vec<i32> = numbers.into_iter().filter(|x| x % 2 == 0).collect();
+
+  //   // print the filtered vector
+  //   println!("The even numbers are: {:?}", evens); // [2, 4]
+
+  //   let print_data = |data: &str| {
+  //     println!("Received data: {}", data);
+  // };
+
+  //   // call the download function with a url and a closure as arguments
+  //   download_data("https://www.rust-lang.org", print_data);
+
+  // sports::football();    // This works!
+  // sports::basketball();
+
+  // apple::munch();  // Look, Ma! No hands!
+
+  football_player()
 
 }
+mod delicious_fruits {
+  pub mod apple {
+      pub fn munch() {
+          println!("Munching an apple...");
+      }
+  }
+}
+
+mod sports {
+  pub fn football() {
+      println!("Football is fun!");
+  }
+
+  pub fn basketball() {
+      println!("Basketball is intense!");
+  }
+}
+
+fn download_data(url: &str, callback: impl FnOnce(&str)) {
+  // simulate downloading data by printing some text
+  println!("Downloading data from {}...", url);
+
+  // simulate some delay by sleeping for one second
+  std::thread::sleep(std::time::Duration::from_secs(1));
+
+  // simulate some data by creating a string
+  let data = format!("Some data from {}", url);
+
+  // execute the callback with the data as an argument
+  callback(&data);
+}
+
+struct Countdown {
+  remaining: i32,
+}
+
+impl Iterator for Countdown {
+  type Item = i32;
+
+  fn next(&mut self) -> Option<i32> {
+      if self.remaining > 0 {
+          let current = self.remaining;
+          self.remaining -= 1;
+          Some(current)
+      } else {
+          None
+      }
+  }
+}
+
+struct Fibonacci {
+  current: u32,
+  next: u32,
+}
+
+impl Iterator for Fibonacci {
+  type Item = u32;
+  fn next(&mut self) -> Option<u32> {
+      let current = self.current;
+      self.current = self.next;
+      self.next = current + self.next;
+
+      Some(current)
+  }
+}
+
 enum Animal {
   Dog(String),
   Cat(String),
