@@ -1,11 +1,15 @@
 use std::collections::HashMap;
 use std::collections::HashSet;
 use delicious_fruits::apple;
-
+use List::{Cons, Nil};
+// use std::io;
+use bs58;
 mod sports_player;
 use sports_player::{football_player};
+use std::{fs,println};
 
 fn main() {
+  // let stdin = io::stdin();
   // let message="Hello Shashank!";
   // let x: i32 = 42;
   // let pi: f64=3.14;
@@ -457,9 +461,326 @@ fn main() {
 
   // apple::munch();  // Look, Ma! No hands!
 
-  football_player()
+  // football_player()
+
+  // chop("carrot");
+  // chop("fruit");
+
+  //option
+  // let number = 48985.0;
+  // let square_root = find_square_root(number);
+
+  // match square_root {
+  //   MyOption::Some(value) => println!("The square root of {} is: {}", number, value),
+  //   MyOption::None => println!("The square root of {} is not a real number.", number),
+  // }  
+    
+  //Option
+  // let a = 10.0;
+  // let b = 0.0;
+  // let division_result = divide(a, b);
+
+  // match division_result {
+  //   Result::Ok(value) => println!("{} divided by {} is: {}", a, b, value),
+  //   Result::Err(error_message) => println!("Error: {}", error_message),
+  // }
+
+  // let base = get_from_database("base");
+  // let height = get_from_database("height");
+  // let area_result = calculate_triangle_area(base, height);
+
+  // match area_result {
+  //   Result::Ok(area) => println!("The area of the triangle is: {} square units.", area),
+  //   Result::Err(error_message) => println!("Error: {}", error_message),
+  // }
+
+  //traits
+  // let books = Books {
+  //   title: String::from("The Rust Book"),
+  // };
+  // let magazine = Magazine {
+  //     name: String::from("Rust Monthly"),
+  // };
+
+  // print_something(&books);
+  // print_something(&magazine);
+
+  // let dogg = Dogg;
+  // let catt = Catt;
+
+  // dogg.speak(); // Prints "The animal says: Woof!"
+  // catt.speak(); // Prints "The animal says: Meow!"
+
+  //box is used to keep the elements in memory
+  // let b = Box::new(5);
+  // println!("b = {}", *b);
+
+	// let list = Cons(1,
+  //   Box::new(Cons(2,
+  //       Box::new(Cons(3,
+  //           Box::new(Nil))))));
+
+  // let circle = Circle{radius: 5.0};
+  // let rectangle = Rectangle{width: 4.0, height: 3.0};
+
+  // draw_object(&circle); // Output: Drawing a circle with radius 5
+  // draw_object(&rectangle); // Output: Drawing a rectangle with width 4 and height 3
+  
+  // let mut drawables: Vec<Box<dyn Drawable>> = Vec::new();
+  // let mut printable_objects: HashMap<String, Box<dyn Printable>> = HashMap::new();
+
+  // let mut shapes: Vec<Box<dyn Shape>> = Vec::new();
+  // shapes.push(Box::new(Circle{radius: 5.0}));
+  // shapes.push(Box::new(Rectangle{width: 4.0, height: 6.0}));
+  // for shape in shapes {
+  //     println!("Shape area: {}", shape.area());
+  // }
+
+  //Generics
+                 
+
 
 }
+
+fn dividee(numerator: f64, denominator: f64) -> Option<f64> {
+  if denominator == 0.0 {
+      None
+  } else {
+      Some(numerator / denominator)
+  }
+}
+
+enum List {
+	Cons(i32, Box<List>),
+	Nil,
+}
+
+trait PartyTrick {
+  fn perform(&self);
+}
+
+fn invite_to_perform(trickster: Box<dyn PartyTrick>) {
+  println!("Ladies and gentlemen, please welcome our next performer!");
+  trickster.perform();
+}
+
+trait Speak {
+  fn speak(&self);
+}
+struct Dog {
+  name: String,
+}
+
+trait Animals {
+    fn speak(&self);
+}
+
+trait Mammal: Animals {
+    fn walk(&self);
+}
+
+struct Dogs;
+
+impl Animals for Dogs {
+    fn speak(&self) {
+        println!("Woof!");
+    }
+}
+
+impl Mammal for Dogs {
+    fn walk(&self) {
+        println!("The dog is walking.");
+    }
+}
+
+impl Speak for Dog {
+  fn speak(&self) {
+      println!("{} says: Woof!", self.name);
+  }
+}
+
+trait Animall {
+  fn make_sound(&self) -> &str;
+
+  fn speak(&self) {
+      println!("The animal says: {}", self.make_sound());
+  }
+}
+struct Dogg;
+struct Catt;
+
+impl Animall for Dogg {
+    fn make_sound(&self) -> &str {
+        "Woof!"
+    }
+    fn speak(&self) {
+      println!("The dog barks: {}", self.make_sound());
+  }
+}
+
+impl Animall for Catt {
+    fn make_sound(&self) -> &str {
+        "Meow!"
+    }
+}
+
+trait Display {
+  fn display(&self) -> String;
+}
+
+trait Drawable {
+  fn draw(&self);
+}
+
+trait Shape {
+    fn area(&self) -> f64;
+}
+
+struct Circle {
+  radius: f64,
+}
+
+impl Shape for Circle {
+  fn area(&self) -> f64 {
+      std::f64::consts::PI * self.radius * self.radius
+  }
+}
+
+impl Drawable for Circle {
+  fn draw(&self) {
+      println!("Drawing a circle with radius {}", self.radius);
+  }
+}
+
+impl Drawable for Rectangle {
+  fn draw(&self) {
+      println!("Drawing a rectangle with width {} and height {}", self.width, self.height);
+  }
+}
+
+fn draw_object(d: &dyn Drawable) {
+  d.draw();
+}
+
+impl Display for Circle {
+  fn display(&self) -> String {
+      format!("Circle with radius: {}", self.radius)
+  }
+}
+struct Rectangle {
+  width: f64,
+  height: f64,
+}
+
+impl Shape for Rectangle {
+  fn area(&self) -> f64 {
+      self.width * self.height
+  }
+}
+
+impl Display for Rectangle {
+  fn display(&self) -> String {
+      format!("Rectangle with width: {} and height: {}", self.width, self.height)
+  }
+}
+
+impl Display for String {
+  fn display(&self) -> String {
+      self.clone()
+  }
+}
+
+trait Printable {
+  fn print(&self);
+}
+
+fn print_something<T: Printable>(item: &T) {
+  item.print();
+}
+
+struct Books {
+  title: String,
+}
+
+impl Printable for Books {
+  fn print(&self) {
+      println!("Books: {}", self.title);
+  }
+}
+
+struct Magazine {
+  name: String,
+}
+
+impl Printable for Magazine {
+  fn print(&self) {
+      println!("Magazine: {}", self.name);
+  }
+}
+
+pub enum Result<T, E> {
+  Ok(T),
+  Err(E),
+}
+
+fn divide(a: f64, b: f64) -> Result<f64, String> {
+  if b == 0.0 {
+      Result::Err("Division by zero is not allowed.".to_string())
+  } else {
+    Result::Ok(a / b)
+  }
+}
+
+fn get_from_database(key: &str) -> Option<f64> {
+  let database = vec![
+      ("base", Some(4.0)),
+      ("height", Some(6.0)),
+  ];
+
+  for (k, v) in database {
+      if k == key {
+          return v;
+      }
+  }
+  None
+}
+
+fn calculate_triangle_area(base: Option<f64>, height: Option<f64>) -> Result<f64, String> {
+  match (base, height) {
+      (Some(b), Some(h)) => {
+          if b <= 0.0 || h <= 0.0 {
+            Result::Err("Both base and height must be positive numbers.".to_string())
+          } else {
+            Result::Ok(0.5 * b * h)
+          }
+      },
+      (None, _) => Result::Err("The base is missing.".to_string()),
+      (_, None) => Result::Err("The height is missing.".to_string()),
+  }
+}
+
+enum MyOption {
+  Some(f64),
+  None,
+}
+
+fn find_square_root(number: f64) -> MyOption {
+  if number >= 0.0 {
+      MyOption::Some(number.sqrt())
+  } else {
+      MyOption::None
+  }
+}
+
+fn chop(vegetable: &str) {
+  match vegetable {
+      "carrot" => println!("Chopping a carrot."),
+      "celery" => println!("Chopping a celery."),
+      "tomato" => panic!("Don't know how to handle a tomato!"),
+      _ => panic!("Chopping some unknown vegetable."),
+  }
+}
+
 mod delicious_fruits {
   pub mod apple {
       pub fn munch() {
@@ -521,7 +842,6 @@ impl Iterator for Fibonacci {
       let current = self.current;
       self.current = self.next;
       self.next = current + self.next;
-
       Some(current)
   }
 }
@@ -571,10 +891,6 @@ enum Weather {
   Snowy,
 }
 
-struct Rectangle {
-  width: f64,
-  height: f64,
-}
 
 impl Rectangle {
   fn area(&self) -> f64 {

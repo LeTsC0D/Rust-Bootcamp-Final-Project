@@ -20,6 +20,13 @@ path = "src/calculator.rs"
 name = "customFilter"
 path = "src/customFilter.rs"
 
+
+[[bin]]
+name = "store_inventory_management_system"
+path = "src/store_inventory_management_system.rs"
+
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+bs58 = "0.5.0"
