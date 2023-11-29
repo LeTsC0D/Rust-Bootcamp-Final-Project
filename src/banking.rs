@@ -53,6 +53,6 @@ fn main() {
   account2.withdraw(200);
 
   // Call balance on both accounts and print the result
-  println!("Balance in account {}: {}", account1.account_number, account1.balance());
-  println!("Balance in account {}: {}", account2.account_number, account2.balance());
+  println!("Balance in account {} {}: {}", account1.account_number,account1.holder_name, account1.balance());
+  println!("Balance in account {} {}: {}", account2.account_number,account1.holder_name, account2.balance());
 }
