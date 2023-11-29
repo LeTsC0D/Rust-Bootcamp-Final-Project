@@ -25,6 +25,10 @@ name = "banking"
 path = "src/banking.rs"
 
 [[bin]]
+name = "banking_error_handling"
+path = "src/banking_error_handling.rs"
+
+[[bin]]
 name = "store_inventory_management_system"
 path = "src/store_inventory_management_system.rs"
 
