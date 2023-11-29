@@ -20,6 +20,9 @@ path = "src/calculator.rs"
 name = "customFilter"
 path = "src/customFilter.rs"
 
+[[bin]]
+name = "banking"
+path = "src/banking.rs"
 
 [[bin]]
 name = "store_inventory_management_system"
